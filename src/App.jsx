@@ -27,12 +27,10 @@ function App() {
       setGenshinState({
         ...genshinState,
         types:respJSON.types,
-      });      
+      });   
+   /*   genshinState = {{types:[...]} artifacts :[.....]}  */
     }else{
-      setGenshinState({
-        ...genshinState,
-        [item]:respJSON,
-      });
+      setGenshinState({types:[...genshinState.types],[item]:respJSON});
     }
 console.log(respJSON);
   
@@ -70,6 +68,17 @@ fetchGenshinApi("types");
           {genshinState.artifacts.map((artifact)=> (
             <option key ={artifact} value={artifact}>
               {artifact}
+            </option>
+          ))}
+        </select>
+      )}
+    
+      {genshinState.boss &&(
+        <select name="boss">
+          <option value="">Seleccione una opcion</option>
+          {genshinState.boss.map((boss)=> (
+            <option key ={boss} value={boss}>
+              {boss}
             </option>
           ))}
         </select>
